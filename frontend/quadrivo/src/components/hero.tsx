@@ -1,7 +1,9 @@
+'use client'
 import React from 'react'
 import Link from 'next/link';
 import Image from 'next/image';
-import { Button, buttonVariants } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui/button';
+import { motion } from 'framer-motion';
 const Hero = () => {
     return (
         <>
@@ -18,19 +20,20 @@ const Hero = () => {
                     <svg className="blur-3xl absolute opacity-80 right-0" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" height="100%" width="50%">
                         <g clipPath="url(#clip0_17_60)">
                             <g filter="url(#filter0_f_17_60)">
-                            <path d="M128.6 0H0V322.2L332.5 211.5L128.6 0Z" fill="rgba(117, 83, 172, 0.5)"></path>
-                            <path d="M400 0H128.6L332.5 211.5L400 78.75V0Z" fill="rgba(117, 83, 172, 0.6)"></path>
-                            <path d="M200 0H256.6L332.5 211.5L400 200.75V0Z" fill="rgba(255, 0, 255, 0.6)"></path>
+                                <path d="M128.6 0H0V322.2L332.5 211.5L128.6 0Z" fill="rgba(117, 83, 172, 0.5)"></path>
+                                <path d="M400 0H128.6L332.5 211.5L400 78.75V0Z" fill="rgba(117, 83, 172, 0.6)"></path>
+                                <path d="M200 0H256.6L332.5 211.5L400 200.75V0Z" fill="rgba(255, 0, 255, 0.6)"></path>
                             </g></g>
-                            <defs>
-                                <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="719.867" id="filter0_f_17_60" width="719.867" x="-159.933" y="-159.933"><feFlood floodOpacity="0" result="BackgroundImageFix"></feFlood><feBlend in2="BackgroundImageFix" result="shape" in="SourceGraphic" mode="normal"></feBlend><feGaussianBlur stdDeviation="79.9667" result="effect1_foregroundBlur_17_60"></feGaussianBlur>
-                                </filter>
-                            </defs>
-                        </svg>
+                        <defs>
+                            <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="719.867" id="filter0_f_17_60" width="719.867" x="-159.933" y="-159.933"><feFlood floodOpacity="0" result="BackgroundImageFix"></feFlood><feBlend in2="BackgroundImageFix" result="shape" in="SourceGraphic" mode="normal"></feBlend><feGaussianBlur stdDeviation="79.9667" result="effect1_foregroundBlur_17_60"></feGaussianBlur>
+                            </filter>
+                        </defs>
+                    </svg>
                     <div className="items-center relative max-w-7xl mx-auto w-full lg:px-16 md:px-12 lg:pb-24 lg:pt-30 pb-12 pt-28 px-5">
                         <div className="max-w-5xl mx-auto">
                             <div className="md:text-center text-left">
-                                <div className="max-w-4xl gap-6 lg:gap-12 lg:items-end mx-auto">
+                                <motion.div className="max-w-4xl gap-6 lg:gap-12 lg:items-end mx-auto"
+                                    initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.5 }}>
                                     <div>
                                         {/* <div className="flex justify-center align-middle">
                                             <Image src='/logo.png' alt="Example Image" width={800} height={300} />
@@ -40,11 +43,12 @@ const Hero = () => {
                                         <p className="font-semithin text-2xl leading-7 tracking-tight bg-clip-text text-transparent bg-gradient-to-br from-slate-100 via-slate-300 to-slate-600 m-2 p-4">Empowering crosschain funding</p>
 
                                     </div>
-                                </div>
-                                <div className="flex flex-col gap-3 lg:items-cenfill-ruleter lg:justify-center mt-12 sm:flex-row">
+                                </motion.div>
+                                <motion.div className="flex flex-col gap-3 lg:items-cenfill-ruleter lg:justify-center mt-12 sm:flex-row"
+                                initial={{ opacity: 0, y: 100 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
                                     <Link href="#features" className={buttonVariants({ variant: "secondary", size: "lg" })}>Get Started</Link>
 
-                                </div>
+                                </motion.div>
                             </div>
                         </div>
                     </div>

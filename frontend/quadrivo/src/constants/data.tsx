@@ -14,11 +14,7 @@ export const navLinks = [
     {
         name: 'Fund Projct',
         url: '#fund'
-    },
-    {
-        name: 'Connect With Us',
-        url: '#connect'
-    },
+    }
     ];
 
 export const aboutData = [
