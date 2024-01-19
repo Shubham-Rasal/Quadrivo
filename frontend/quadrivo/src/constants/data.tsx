@@ -1,23 +1,23 @@
 export const navLinks = [
     {
         name: 'Home',
-        url: '/'
+        url: '#'
     },
     {
         name: 'About',
-        url: '/about'
+        url: '#about'
     },
     {
         name: 'Technologies',
-        url: '/tech'
+        url: '#tech'
     },
     {
         name: 'Examples',
-        url: '/examples'
+        url: '#examples'
     },
     {
-        name: 'Contact',
-        url: '/contact'
+        name: 'Connect With Us',
+        url: '#connect'
     },
     ];
 

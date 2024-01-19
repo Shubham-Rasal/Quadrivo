@@ -2,7 +2,7 @@ import React from 'react'
 
 const Tech = () => {
   return (
-    <div className='h-[900px]'>Tech</div>
+    <div id="tech" className='pt-28'>Tech</div>
   )
 }
 
