@@ -8,6 +8,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Features />
+      <Permit />
       <Footer />
     </main>
   );
