@@ -5,7 +5,7 @@ import { Button, buttonVariants } from '@/components/ui/button';
 const Hero = () => {
     return (
         <>
-            <section className="relative w-full my-48 " id="hero">
+            <section className="relative w-full mb-48 " id="hero">
                 <div className="flex justify-between w-full -z-[1px] absolute flex-row h-full left-0 lg:h-full lg:max-w-7xl lg:px-0 mx-auto px-6 right-0">
                     <div className="w-full h-full border-[#f5f5f510]/5 border-dashed border-x"></div>
                     <div className="w-full h-full border-[#f5f5f510]/5 border-dashed border-x"></div>
@@ -14,7 +14,7 @@ const Hero = () => {
                     <div className="w-full h-full border-[#f5f5f510]/5 border-dashed border-x"></div>
                     <div className="w-full h-full border-[#f5f5f510]/5 border-dashed border-x"></div>
                 </div>
-                <section>
+                <section className='mb-60'>
                     <svg className="blur-3xl absolute opacity-80 right-0" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" height="100%" width="50%">
                         <g clipPath="url(#clip0_17_60)">
                             <g filter="url(#filter0_f_17_60)">
@@ -42,7 +42,7 @@ const Hero = () => {
                                     </div>
                                 </div>
                                 <div className="flex flex-col gap-3 lg:items-cenfill-ruleter lg:justify-center mt-12 sm:flex-row">
-                                    <Link href="#about" className={buttonVariants({ variant: "secondary", size: "lg" })}>Get Started</Link>
+                                    <Link href="#features" className={buttonVariants({ variant: "secondary", size: "lg" })}>Get Started</Link>
 
                                 </div>
                             </div>

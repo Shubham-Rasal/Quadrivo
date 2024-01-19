@@ -1,9 +1,20 @@
+'use client'
 import React from 'react'
 import styles from '@/components/styles/navstyles'
 import { navLinks } from '@/constants/data'
+import { useState } from 'react'
 const Navbar = () => {
+    const [color, setColor] = useState(false)
+    const changeNavbarColor = () => {
+        if (window.scrollY >= 80) {
+            setColor(true)
+        } else {
+            setColor(false)
+        }
+    }
+    window.addEventListener('scroll', changeNavbarColor)
     return (
-        <nav className={styles.navComponent}>
+        <nav className={color ? styles.navComponentScroll : styles.navComponent}>
             <div className={styles.navDiv}>
                 <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
                     <span className={styles.name}>Quadrivo</span>

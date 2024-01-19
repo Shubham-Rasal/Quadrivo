@@ -4,16 +4,8 @@ export const navLinks = [
         url: '#'
     },
     {
-        name: 'About',
-        url: '#about'
-    },
-    {
-        name: 'Technologies',
-        url: '#tech'
-    },
-    {
-        name: 'Examples',
-        url: '#examples'
+        name: 'Features',
+        url: '#features'
     },
     {
         name: 'Connect With Us',
