@@ -1,7 +1,8 @@
-'use client'
+"use client"
 import React, { useState, useEffect } from 'react';
 import styles from '@/components/styles/navstyles';
 import { navLinks } from '@/constants/data';
+import { ConnectKitButton } from "connectkit";
 
 const Navbar = () => {
   const [color, setColor] = useState(false);
@@ -29,12 +30,13 @@ const Navbar = () => {
       <div className={styles.navDiv}>
         <ul className={styles.navLinkList}>
           {navLinks.map((link: any) => (
-            <li key={link.id}>
+            <li key={link.id} className='flex items-center justify-center'>
               <a href={link.url} className={styles.navlinks}>
                 {link.name}
               </a>
             </li>
           ))}
+          <li><ConnectKitButton/></li>
         </ul>
       </div>
     </nav>
