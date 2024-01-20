@@ -4,11 +4,11 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { WagmiConfig, createConfig } from "wagmi";
 import { ConnectKitProvider, getDefaultConfig } from "connectkit";
-import { baseSepolia } from "viem/chains";
+import { sepolia } from "viem/chains";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const chains = [baseSepolia];
+const chains = [sepolia];
 
 const config = createConfig(
   getDefaultConfig({
