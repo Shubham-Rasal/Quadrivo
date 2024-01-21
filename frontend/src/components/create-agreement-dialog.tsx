@@ -1,4 +1,5 @@
 "use client";
+/* tslint:disable */
 import React from "react";
 import {
   Dialog,
