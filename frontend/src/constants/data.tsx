@@ -1,26 +1,3 @@
-export const navLinks = [
-    {
-        id: 1,
-        name: 'Home',
-        url: '#'
-    },
-    {
-        id: 2,
-        name: 'Features',
-        url: '#features'
-    },
-    {
-        id: 3,
-        name: 'Create Project',
-        url: '#project'
-    },
-    {
-        id: 4,
-        name: 'Fund Projct',
-        url: '#fund'
-    }
-    ];
-
 export const aboutData = [
     {
         id: 1,
@@ -47,4 +24,4 @@ export const aboutData = [
         src: "/graph.png"
     }
 ]
-export default navLinks
+export default aboutData

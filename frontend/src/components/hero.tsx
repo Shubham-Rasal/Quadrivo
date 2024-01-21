@@ -49,7 +49,7 @@ const Hero = () => {
                                 <motion.div className="flex flex-col gap-3 lg:items-cenfill-ruleter lg:justify-center mt-12 sm:flex-row"
                                     initial={{ opacity: 0, y: 100 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
                                     <Link href="#features" className={buttonVariants({ variant: "default", size: "lg" })}>Explore Features</Link>
-                                    <Link href="#features" className={buttonVariants({ variant: "default", size: "lg" })}>Get Started</Link>
+                                    <Link href="/project" className={buttonVariants({ variant: "default", size: "lg" })}>Get Started</Link>
                                 </motion.div>
                             </div>
                         </div>

@@ -1,7 +1,7 @@
 "use client";
 import { useContractRead } from "wagmi";
 import React from "react";
-import { Button } from "./ui/button";
+import { buttonVariants } from "./ui/button";
 import FundProject from "./fund-project-dialog";
 import {
   Card,
@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/card"
 
 import { motion } from 'framer-motion'
+import { Link } from "lucide-react";
 
 const Projects = () => {
   const abi = [
@@ -455,12 +456,12 @@ const Projects = () => {
       transition={{duration: 0.5}}
     >
       <div>
-        <p className="text-3xl font-bold m-4">Explore Projects</p>
+        <h1 className="font-medium mt-8 p-8 text-[80px] leading-[74px] tracking-tight bg-clip-text text-transparent bg-gradient-to-br from-blue-900 via-violet-900 to-black">Explore Projects</h1>
       </div>
       <div className="grid grid-cols-3">
         {mockProjects.map((project: Project, index) => {
           return (
-            <div key={index}>
+            <div key={index} className="">
               <Card className="m-4 pb-2">
                 <CardHeader>
                   <CardTitle>{project.name}</CardTitle>
