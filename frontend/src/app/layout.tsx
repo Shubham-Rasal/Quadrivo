@@ -4,7 +4,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { WagmiConfig, createConfig } from "wagmi";
 import { ConnectKitProvider, getDefaultConfig } from "connectkit";
-import { sepolia } from "viem/chains";
+import { polygonMumbai, sepolia } from "viem/chains";
+import Navbar from "@/components/navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -34,6 +35,7 @@ export default function RootLayout({
               ethereumOnboardingUrl: "true",
             }}
           >
+            <Navbar />
             {children}
           </ConnectKitProvider>
         </WagmiConfig>
