@@ -60,10 +60,25 @@ contract Vault is FundingVault {
     Project[] public projects;
     DelegationAgreement[] public delegationAgreements;
 
+    
+
     constructor(address _token) {
         //call approve for the tokens to be deposited in the aave protocol
         token = IERC20(_token);
     }
+
+    function getProjects() external view returns (Project[] memory) {
+        return projects;
+    }
+
+    function getDelegationAgreements()
+        external
+        view
+        returns (DelegationAgreement[] memory)
+    {
+        return delegationAgreements;
+    }
+
 
     function registerDelegationAggrement(
         string memory _name,

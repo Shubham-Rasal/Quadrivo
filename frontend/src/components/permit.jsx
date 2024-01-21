@@ -4,7 +4,7 @@ import { Button } from "./ui/button";
 import { signERC2612Permit } from "eth-permit";
 import ethers from 'ethers'
 
-import abi from "./../abi/GHOabi.json";
+import abi from "../abi/GHOabi.json";
 const Permit = () => {
   const handlePermit = async () => {
     // Sign message using injected provider (ie Metamask).

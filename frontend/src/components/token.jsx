@@ -22,7 +22,7 @@ const Token = () => {
       <CardHeader
         className="
       
-      flex flex-row items-center justify-between space-y-0 pb-1"
+      flex flex-row items-center justify-between   pb-1"
       >
         <CardTitle className="text-sm font-medium">Token Balance</CardTitle>
       </CardHeader>
@@ -35,7 +35,6 @@ const Token = () => {
               result.data?.formatted.toString().split(".")[1].slice(0, 1)
           }
         </div>
-        <p className="text-xs text-muted-foreground">+20.1% from last month</p>
       </CardContent>
     </Card>
   );
