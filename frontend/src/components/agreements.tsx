@@ -401,9 +401,9 @@ const Agreements = () => {
 
   return (
     <div>
-      {data.map((agreement: any) => {
+      {data.map((agreement: any, index) => {
         return (
-          <div>
+          <div key={index}>
             <div>Name: {agreement.name}</div>
             <div>Delegator: {agreement.delegator}</div>
             <div>Amount: {agreement.amount}</div>

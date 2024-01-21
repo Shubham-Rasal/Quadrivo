@@ -458,7 +458,7 @@ const CreateAgreement = () => {
   };
 
   return (
-    <Dialog open={open} onOpenChange={setOpen} className="h-full">
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button>Create Agreement</Button>
       </DialogTrigger>
