@@ -53,7 +53,7 @@ const FundProject = ({
     abi,
     address: "0xa9023fedF58dcf60f94c73C150D4454eDD62bA23",
     functionName: "fundProject",
-    args: [BigInt(projectId), BigInt(amt) * BigInt(10 ** 18)],
+    args: [BigInt(projectId), BigInt(amt)],
   });
 
   const submitFund = () => {

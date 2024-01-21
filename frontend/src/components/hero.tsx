@@ -9,18 +9,18 @@ import Token from "@/components/token";
 const Hero = () => {
   return (
     <>
-    <div className="flex -z-10 absolute top-0 left-0">
-      <span className="flex from-gray-200 to-transparent bg-gradient-to-b w-[1.1px] h-[70vh] mx-20"></span>
-      <span className="flex from-gray-200 to-transparent bg-gradient-to-b w-[1.1px] h-[70vh] mx-20"></span>
-      <span className="flex from-gray-200 to-transparent bg-gradient-to-b w-[1.1px] h-[70vh] mx-20"></span>
-      <span className="flex from-gray-200 to-transparent bg-gradient-to-b w-[1.1px] h-[70vh] mx-20"></span>
-      <span className="flex from-gray-200 to-transparent bg-gradient-to-b w-[1.1px] h-[70vh] mx-20"></span>
-      <span className="flex from-gray-200 to-transparent bg-gradient-to-b w-[1.1px] h-[70vh] mx-20"></span>
-      <span className="flex from-gray-200 to-transparent bg-gradient-to-b w-[1.1px] h-[70vh] mx-20"></span>
-      <span className="flex from-gray-200 to-transparent bg-gradient-to-b w-[1.1px] h-[70vh] mx-20"></span>
-      <span className="flex from-gray-200 to-transparent bg-gradient-to-b w-[1.1px] h-[70vh] mx-20"></span>
-      <span className="flex from-gray-200 to-transparent bg-gradient-to-b w-[1.1px] h-[70vh] mx-20"></span>
-    </div>
+      <div className="flex -z-10 absolute top-0 left-0">
+        <span className="flex from-gray-200 to-transparent bg-gradient-to-b w-[1.1px] h-[70vh] mx-20"></span>
+        <span className="flex from-gray-200 to-transparent bg-gradient-to-b w-[1.1px] h-[70vh] mx-20"></span>
+        <span className="flex from-gray-200 to-transparent bg-gradient-to-b w-[1.1px] h-[70vh] mx-20"></span>
+        <span className="flex from-gray-200 to-transparent bg-gradient-to-b w-[1.1px] h-[70vh] mx-20"></span>
+        <span className="flex from-gray-200 to-transparent bg-gradient-to-b w-[1.1px] h-[70vh] mx-20"></span>
+        <span className="flex from-gray-200 to-transparent bg-gradient-to-b w-[1.1px] h-[70vh] mx-20"></span>
+        <span className="flex from-gray-200 to-transparent bg-gradient-to-b w-[1.1px] h-[70vh] mx-20"></span>
+        <span className="flex from-gray-200 to-transparent bg-gradient-to-b w-[1.1px] h-[70vh] mx-20"></span>
+        <span className="flex from-gray-200 to-transparent bg-gradient-to-b w-[1.1px] h-[70vh] mx-20"></span>
+        <span className="flex from-gray-200 to-transparent bg-gradient-to-b w-[1.1px] h-[70vh] mx-20"></span>
+      </div>
       <section className="relative w-full" id="hero">
         <div className="flex justify-between w-full -z-[1px] absolute flex-row h-full left-0 lg:h-full lg:max-w-7xl lg:px-0 mx-auto px-6 right-0">
           <div className="w-full h-full border-[#f5f5f510]/5 border-dashed border-x"></div>
@@ -97,7 +97,8 @@ const Hero = () => {
                     </h1>
 
                     <p className="font-semithin text-2xl leading-7 tracking-tight bg-clip-text text-transparent bg-gradient-to-br from-blue-900 via-violet-900 to-black m-2 p-4">
-                      Empowering crosschain funding
+                      Permisionless Agreement based Credit Delegation and
+                      Funding
                     </p>
                   </div>
                 </motion.div>

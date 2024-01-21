@@ -28,9 +28,24 @@ Quadrivo introduces a novel approach to decentralized finance by combining the p
 
 ### Sponsor Workflow
 
-1. Sponsor provides tokens (e.g., SepoliaETH) to the vault.
-2. Vault issues shares to the sponsor.
-3. Sponsor engages with functions like `mintGho` to interact with the system.
+   - Sponsors deposit ERC20 tokens into the vault.
+   - Defines the agreement criteria for the deposited tokens.
+   - Permits and delegates the vault to spend tokens on their behalf.
+  
+### Project Workflow
+
+   - Project owners register their project on Quadrivo.
+   - Quadrivo verifies the project agreements across all chains.
+   - Quadrivo calculates the total matching pool for the project.
+   - Users contribute tokens to fund projects.
+   - Contributions are matched with quadratic GHO amounts from the vault.
+  
+### User Workflow
+
+   - Users contribute tokens to fund projects.
+   - Contributions are matched with quadratic GHO amounts from the vault.
+   - Users receive project tokens in return for their contributions.
+   - Users can redeem their project tokens for the underlying ERC20 tokens.
 
 
 

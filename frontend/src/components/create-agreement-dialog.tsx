@@ -21,7 +21,6 @@ import vaultAbi from "@/abi/Vault.json";
 import { useAccount, useContractWrite, useWalletClient } from "wagmi";
 import { PermitSignature, usePermit } from "wagmi-permit";
 import { parseEther } from "ethers";
-import { parse } from "path";
 import { useRouter } from "next/navigation";
 const CreateAgreement = () => {
   const [open, setOpen] = React.useState(false);
@@ -456,7 +455,7 @@ const CreateAgreement = () => {
     functionName: "registerDelegationAggrement",
     args: [
       form.watch("name"),
-      parseEther(form.watch("amount").toString()),
+      BigInt(form.watch("amount") * 10 ** 18),
       //convert to secs
       BigInt(form.watch("duration") * 86400),
       form.watch("tokenToOwn") as `0x${string}`,
