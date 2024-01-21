@@ -1157,7 +1157,7 @@ const CreateAgreement = () => {
                       : "Approve Permit"}
                   </Button>
                 )}
-                <Button type="submit" disabled={!agreementWriteResult}>
+                <Button type="submit">
                   {isAgreementWriteLoading
                     ? "Loading"
                     : agreementWriteResult
