@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, {useState} from "react";
 import {
   Dialog,
   DialogTrigger,
@@ -24,8 +24,6 @@ type Project = {
     fundingGoal: number;
     fundingRecipient: string;
     amountRaised: number;
-    fundingGoalReached: boolean;
-    fundingClosed: boolean;
     totalFunders: number;
     contributions: number[];
 };
@@ -35,6 +33,7 @@ type FundProps = {
 };
 
 const FundProject: React.FC<FundProps> = ({project}) => {
+  const [funding,setFunding] = useState<number>(0)
   const [open, setOpen] = React.useState(false);
   const textEncoder = new TextEncoder();
    const abi = [
@@ -429,6 +428,7 @@ const FundProject: React.FC<FundProps> = ({project}) => {
     tokenToOwn: z.string(),
     nftToOwn: z.string(),
     data: z.string(),
+    fund: z.number()
   });
 
   const form = useForm<z.infer<typeof fundSchema>>({
@@ -439,6 +439,7 @@ const FundProject: React.FC<FundProps> = ({project}) => {
       tokenToOwn: "0x6503C123e956BDFB8a8575Ec899463422665136b",
       nftToOwn: "0xc4bF5CbDaBE595361438F8c6a187bDc330539c60",
       data: "github: 10",
+      fund: 0
     },
   });
 
@@ -451,7 +452,10 @@ const FundProject: React.FC<FundProps> = ({project}) => {
     abi: abi,
     address: "0xa9023fedF58dcf60f94c73C150D4454eDD62bA23",
     functionName: "fundProject",
- 
+    args: [
+      BigInt(10),
+      BigInt(10),
+    ],
   });
 
   const onSubmit = async (values: z.infer<typeof fundSchema>) => {
@@ -459,7 +463,7 @@ const FundProject: React.FC<FundProps> = ({project}) => {
     try {
       const agreement = fundSchema.parse(values);
       console.log(agreement);
-      // writeAgreement();
+      writeAgreement();
 
       console.log(agreementWriteResult);
     } catch (error) {
@@ -490,9 +494,9 @@ const FundProject: React.FC<FundProps> = ({project}) => {
                 name="name"
                 render={({ field }) => (
                   <FormItem className="mt-1">
-                    <Label>Agreement Name</Label>
+                    <Label>Project Name</Label>
                     <FormControl>
-                      <Input placeholder="Agreement Name" {...field} />
+                      <Input placeholder="Agreement Name" {...field} disabled={true}/>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -507,7 +511,7 @@ const FundProject: React.FC<FundProps> = ({project}) => {
                     <FormItem className="mt-1">
                       <Label>Amount (in GHO)</Label>
                       <FormControl>
-                        <Input placeholder="Amount" {...field} />
+                        <Input placeholder="Amount" {...field} disabled={true}/>
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -520,7 +524,7 @@ const FundProject: React.FC<FundProps> = ({project}) => {
                     <FormItem className="mt-1">
                       <Label>Duration (in days)</Label>
                       <FormControl>
-                        <Input placeholder="Duration" {...field} />
+                        <Input placeholder="Duration" {...field} disabled={true}/>
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -535,7 +539,7 @@ const FundProject: React.FC<FundProps> = ({project}) => {
                   <FormItem className="mt-1">
                     <Label>Token To Own</Label>
                     <FormControl>
-                      <Input placeholder="Token To Own" {...field} />
+                      <Input placeholder="Token To Own" {...field} disabled={true}/>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -549,7 +553,7 @@ const FundProject: React.FC<FundProps> = ({project}) => {
                   <FormItem className="mt-1">
                     <Label>NFT To Own</Label>
                     <FormControl>
-                      <Input placeholder="NFT To Own" {...field} />
+                      <Input placeholder="NFT To Own" {...field} disabled={true}/>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -570,15 +574,36 @@ const FundProject: React.FC<FundProps> = ({project}) => {
                       </div>
                     </Label>
                     <FormControl>
-                      <Textarea placeholder="Data" {...field} />
+                      <Textarea placeholder="Data" {...field} disabled={true}/>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
 
+                <FormField
+                control={form.control}
+                name="fund"
+                render={({ field }) => (  
+                  <FormItem className="mt-1">
+                    <Label>
+                      Funding Amount (GHO)<Label className="text-red-500">*</Label>
+                    </Label>
+                    <Input
+                    type="number"
+                    id="email"
+                    name="email"
+                    required={true}
+                    value={funding}
+                      onChange={(e) => setFunding(Number(e.target.value))}
+                    />
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
               <div className="flex justify-between mt-4">
-                <Button type="button">Permit</Button>
+                {/* <Button type="button">Permit</Button> */}
                 <Button type="submit">Fund</Button>
               </div>
             </form>
