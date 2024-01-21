@@ -1,44 +1,41 @@
-# Quadrivo
+# Quadrivo - Permisionless Agreement based Credit Delegation and Funding
 
-LFGHO - Permisionless Agrement based Credit Delegation and Funding
+Welcome to Quadrivo, a cutting-edge platform designed for permissionless credit delegation and project funding. This repository holds the core components of Quadrivo, providing users with a seamless experience in sponsoring, managing delegation agreements, and contributing to innovative projects.
 
-### Workflow for sponsor
+Quadrivo introduces a novel approach to decentralized finance by combining the power of credit delegation and quadratic funding. Sponsors can deposit ERC20 tokens into the vault, receive corresponding shares, and actively participate in the funding ecosystem.
 
-- Sponsor provides token like sepoliaEth to the vault.
-- Vault issues shares to the sponsor.
-- Sponsor uses this 
+### Key Features
 
+1. **Deposit Matching Pool**
+   - Sponsors contribute ERC20 tokens (e.g., ETH, LINK) to the vault.
+   - New shares or vault tokens are minted and allocated to sponsors.
 
-```
+2. **Register Delegation Agreement**
+   - Sponsors define utilization criteria for their funds.
+   - Criteria may include NFT ownership, network deployment specifics, or token holdings.
 
+3. **Register Project**
+   - During project creation, agreements across all chains are verified.
+   - A total matching pool for the project is calculated.
+
+4. **Fund Project**
+   - Users contribute tokens to fund projects.
+   - Contributions are matched with quadratic GHO amounts from the vault.
+
+### Sponsor Workflow
+
+1. Sponsor provides tokens (e.g., SepoliaETH) to the vault.
+2. Vault issues shares to the sponsor.
+3. Sponsor engages with functions like `mintGho` to interact with the system.
+
+```solidity
 function mintGho() public {
   // Approve the Aave Pool to pull asset funds
-
   asset.approve(address(pool), 100e18);
   // Supply asset to the Aave Pool
-
   pool.supply(address(asset), 100e18, USER, 0);
   // Mint 10 GHO
-
   pool.borrow(address(gho), 100e18, 2, 0, USER);
 }
-
 ```
 
-- depositMatchingPool: Sponsor funds the vault with any ERC20 token linke eth or link.
-                         New shares or vault tokens are minted to give to sponsor.
-                        
-- registerDelegationAggrement: Sponsor decides how his funds will be used.
-For example - 
-1. Project Owner has specific NFT
-2. Project is deployed on a particular network
-3. Project Owner holds some tokens
-
-- send/recieve - These function are provided by CCIP for message passing
-
-- registerProject - During Project Creation, all the agreements across all chains is verified,
-                    and a total matching pool for that project is calculated.
-
-- fundProject - User can fund the projects with their own tokens.
-                  The contribution will be matched with a quadratic GHO amount from the vault
-                based on allotted matching pool.
