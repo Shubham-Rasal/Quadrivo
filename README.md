@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="https://github.com/Shubham-Rasal/Quadrivo/assets/97223188/af69507b-a3a8-4b55-92a4-4f6670721511" alt="Quadrivo Logo" width="200" height="200">
+</div>
+
 # Quadrivo - Permisionless Agreement based Credit Delegation and Funding
 
 Welcome to Quadrivo, a cutting-edge platform designed for permissionless credit delegation and project funding. This repository holds the core components of Quadrivo, providing users with a seamless experience in sponsoring, managing delegation agreements, and contributing to innovative projects.
