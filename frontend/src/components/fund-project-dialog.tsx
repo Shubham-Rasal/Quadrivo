@@ -24,8 +24,6 @@ type Project = {
     fundingGoal: number;
     fundingRecipient: string;
     amountRaised: number;
-    fundingGoalReached: boolean;
-    fundingClosed: boolean;
     totalFunders: number;
     contributions: number[];
 };

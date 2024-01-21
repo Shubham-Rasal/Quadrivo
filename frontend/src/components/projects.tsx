@@ -283,16 +283,6 @@ const Projects = () => {
               type: "uint256",
             },
             {
-              internalType: "bool",
-              name: "fundingGoalReached",
-              type: "bool",
-            },
-            {
-              internalType: "bool",
-              name: "fundingClosed",
-              type: "bool",
-            },
-            {
               internalType: "uint256",
               name: "matchingPoolAmount",
               type: "uint256",
@@ -352,16 +342,6 @@ const Projects = () => {
           type: "uint256",
         },
         {
-          internalType: "bool",
-          name: "fundingGoalReached",
-          type: "bool",
-        },
-        {
-          internalType: "bool",
-          name: "fundingClosed",
-          type: "bool",
-        },
-        {
           internalType: "uint256",
           name: "matchingPoolAmount",
           type: "uint256",
@@ -407,8 +387,6 @@ type Project = {
     fundingGoal: number;
     fundingRecipient: string;
     amountRaised: number;
-    fundingGoalReached: boolean;
-    fundingClosed: boolean;
     totalFunders: number;
     contributions: number[];
 };
@@ -438,8 +416,6 @@ const Fund: React.FC<FundProps> = ({ project }) => {
             fundingGoal: 1000,
             fundingRecipient: "0x123",
             amountRaised: 100,
-            fundingGoalReached: false,
-            fundingClosed: false,
             totalFunders: 1,
             contributions: [100],
         },
@@ -449,8 +425,6 @@ const Fund: React.FC<FundProps> = ({ project }) => {
             fundingGoal: 2000,
             fundingRecipient: "0x456",
             amountRaised: 200,
-            fundingGoalReached: false,
-            fundingClosed: false,
             totalFunders: 2,
             contributions: [100, 100],
         },
@@ -460,8 +434,6 @@ const Fund: React.FC<FundProps> = ({ project }) => {
             fundingGoal: 3000,
             fundingRecipient: "0x789",
             amountRaised: 300,
-            fundingGoalReached: false,
-            fundingClosed: false,
             totalFunders: 3,
             contributions: [100, 100, 100],
         },
@@ -478,8 +450,6 @@ const Fund: React.FC<FundProps> = ({ project }) => {
                         <div>Funding Goal: {project.fundingGoal}</div>
                         <div>Funding Recipient: {project.fundingRecipient}</div>
                         <div>Amount Raised: {project.amountRaised}</div>
-                        <div>Funding Goal Reached: {project.fundingGoalReached}</div>
-                        <div>Funding Closed: {project.fundingClosed}</div>
                         <div>Total Funders: {project.totalFunders}</div>
                         <div>Contributions: {project.contributions}</div>
                         <Button>
