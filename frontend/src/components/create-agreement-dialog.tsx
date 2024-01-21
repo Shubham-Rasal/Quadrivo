@@ -441,10 +441,6 @@ const CreateAgreement = () => {
     },
   });
 
-  if (!account.address) {
-    return null;
-  }
-
   const {
     data: agreementWriteResult,
     write: writeAgreement,

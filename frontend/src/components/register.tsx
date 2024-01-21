@@ -492,7 +492,7 @@ const RegisterForm: React.FC = () => {
         await Promise.all(
           data.map(async (item, index) => {
             const result = await fetchBalance({
-              address: "0x7319EC9dFbE3f9e2fd42694156312DF3a525730f",
+              address: address || '0x',
               token: item.tokenToOwn,
             });
             if (result) {
