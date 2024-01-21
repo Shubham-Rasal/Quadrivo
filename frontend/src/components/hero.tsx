@@ -9,7 +9,19 @@ import Token from "@/components/token";
 const Hero = () => {
   return (
     <>
-      <section className="relative w-full mb-48 " id="hero">
+    <div className="flex -z-10 absolute top-0 left-0">
+      <span className="flex from-gray-200 to-transparent bg-gradient-to-b w-[1.1px] h-[70vh] mx-20"></span>
+      <span className="flex from-gray-200 to-transparent bg-gradient-to-b w-[1.1px] h-[70vh] mx-20"></span>
+      <span className="flex from-gray-200 to-transparent bg-gradient-to-b w-[1.1px] h-[70vh] mx-20"></span>
+      <span className="flex from-gray-200 to-transparent bg-gradient-to-b w-[1.1px] h-[70vh] mx-20"></span>
+      <span className="flex from-gray-200 to-transparent bg-gradient-to-b w-[1.1px] h-[70vh] mx-20"></span>
+      <span className="flex from-gray-200 to-transparent bg-gradient-to-b w-[1.1px] h-[70vh] mx-20"></span>
+      <span className="flex from-gray-200 to-transparent bg-gradient-to-b w-[1.1px] h-[70vh] mx-20"></span>
+      <span className="flex from-gray-200 to-transparent bg-gradient-to-b w-[1.1px] h-[70vh] mx-20"></span>
+      <span className="flex from-gray-200 to-transparent bg-gradient-to-b w-[1.1px] h-[70vh] mx-20"></span>
+      <span className="flex from-gray-200 to-transparent bg-gradient-to-b w-[1.1px] h-[70vh] mx-20"></span>
+    </div>
+      <section className="relative w-full" id="hero">
         <div className="flex justify-between w-full -z-[1px] absolute flex-row h-full left-0 lg:h-full lg:max-w-7xl lg:px-0 mx-auto px-6 right-0">
           <div className="w-full h-full border-[#f5f5f510]/5 border-dashed border-x"></div>
           <div className="w-full h-full border-[#f5f5f510]/5 border-dashed border-x"></div>
@@ -67,7 +79,7 @@ const Hero = () => {
               </filter>
             </defs>
           </svg>
-          <div className="items-center relative max-w-7xl mx-auto w-full lg:px-16 md:px-12 lg:pb-24 lg:pt-30 pb-12 pt-28 px-5">
+          <div className="items-center flex relative max-w-7xl mx-auto w-full lg:px-16 md:px-12 lg:pb-24 lg:pt-30 pb-12 pt-28 px-5">
             <div className="max-w-5xl mx-auto">
               <div className="md:text-center text-left">
                 <motion.div
@@ -80,7 +92,7 @@ const Hero = () => {
                     {/* <div className="flex justify-center align-middle">
                                             <Image src='/logo.png' alt="Example Image" width={800} height={300} />
                                         </div> */}
-                    <h1 className="font-medium mt-8 p-8 text-[80px] leading-[74px] tracking-tight bg-clip-text text-transparent bg-gradient-to-br from-blue-900 via-violet-900 to-black">
+                    <h1 className="font-semibold mt-8 text-[100px] leading-[74px] tracking-tight bg-clip-text text-transparent bg-gradient-to-br from-blue-900 via-violet-900 to-black">
                       Quadrivo
                     </h1>
 
@@ -90,7 +102,7 @@ const Hero = () => {
                   </div>
                 </motion.div>
                 <motion.div
-                  className="flex flex-col gap-3 lg:items-cenfill-ruleter lg:justify-center mt-12 sm:flex-row"
+                  className="flex flex-col gap-3 lg:items-cenfill-ruleter justify-center mt-12 sm:flex-row"
                   initial={{ opacity: 0, y: 100 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
@@ -107,7 +119,7 @@ const Hero = () => {
                   <Link
                     href="/project"
                     className={buttonVariants({
-                      variant: "default",
+                      variant: "outline",
                       size: "lg",
                     })}
                   >
