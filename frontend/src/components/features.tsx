@@ -3,7 +3,7 @@ import React from 'react'
 import { aboutData } from '@/constants/data'
 import Description from './about_cards/description'
 import Visual from './about_cards/visual'
-import { motion, transform } from 'framer-motion'
+import { motion } from 'framer-motion'
 const Features = () => {
   return (
     <div id="features" className='w-full flex justify-center items-center flex-wrap'>

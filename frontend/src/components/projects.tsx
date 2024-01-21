@@ -3,9 +3,18 @@ import { useContractRead } from "wagmi";
 import React from "react";
 import { Button } from "./ui/button";
 import FundProject from "./fund-project-dialog";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+
+import { motion } from 'framer-motion'
 
 const Projects = () => {
-    const abi = [
+  const abi = [
     {
       inputs: [
         {
@@ -381,7 +390,7 @@ const Projects = () => {
   if (error) return <div>Error: {error.message}</div>;
   if (!data) return <div>No data</div>;
 
-type Project = {
+  type Project = {
     name: string;
     description: string;
     fundingGoal: number;
@@ -389,77 +398,146 @@ type Project = {
     amountRaised: number;
     totalFunders: number;
     contributions: number[];
-};
+  };
 
-type FundProps = {
+  type FundProps = {
     project: Project;
-};
+  };
 
-const Fund: React.FC<FundProps> = ({ project }) => {
+  const Fund: React.FC<FundProps> = ({ project }) => {
     const handleFundProject = () => {
-        // Implement your fund project logic here
-        console.log(`Funding project: ${project.name}`);
+      // Implement your fund project logic here
+      console.log(`Funding project: ${project.name}`);
     };
 
     return (
-        <div>
-            <button onClick={handleFundProject}>Fund Project</button>
-        </div>
+      <div>
+        <button onClick={handleFundProject}>Fund Project</button>
+      </div>
     );
-};
+  };
 
 
-    const mockProjects: Project[] = [
-        {
-            name: "Project 1",
-            description: "Project 1 description",
-            fundingGoal: 1000,
-            fundingRecipient: "0x123",
-            amountRaised: 100,
-            totalFunders: 1,
-            contributions: [100],
-        },
-        {
-            name: "Project 2",
-            description: "Project 2 description",
-            fundingGoal: 2000,
-            fundingRecipient: "0x456",
-            amountRaised: 200,
-            totalFunders: 2,
-            contributions: [100, 100],
-        },
-        {
-            name: "Project 3",
-            description: "Project 3 description",
-            fundingGoal: 3000,
-            fundingRecipient: "0x789",
-            amountRaised: 300,
-            totalFunders: 3,
-            contributions: [100, 100, 100],
-        },
-    ];
+  const mockProjects: Project[] = [
+    {
+      name: "Project 1",
+      description: "Project 1 description",
+      fundingGoal: 1000,
+      fundingRecipient: "0x123",
+      amountRaised: 100,
+      totalFunders: 1,
+      contributions: [100],
+    },
+    {
+      name: "Project 2",
+      description: "Project 2 description",
+      fundingGoal: 2000,
+      fundingRecipient: "0x456",
+      amountRaised: 200,
+      totalFunders: 2,
+      contributions: [100, 100],
+    },
+    {
+      name: "Project 3",
+      description: "Project 3 description",
+      fundingGoal: 3000,
+      fundingRecipient: "0x789",
+      amountRaised: 300,
+      totalFunders: 3,
+      contributions: [100, 100, 100],
+    },
+  ];
 
-    return (
-        <div>
-            <h1>Projects</h1>
-            {mockProjects.map((project: Project, index) => {
-                return (
-                    <div key={index}>
-                        <div>Name: {project.name}</div>
-                        <div>Description: {project.description}</div>
-                        <div>Funding Goal: {project.fundingGoal}</div>
-                        <div>Funding Recipient: {project.fundingRecipient}</div>
-                        <div>Amount Raised: {project.amountRaised}</div>
-                        <div>Total Funders: {project.totalFunders}</div>
-                        <div>Contributions: {project.contributions}</div>
-                        <Button>
-                        <FundProject project={project} />
-                        </Button>
+  return (
+    <motion.div
+      initial={{opacity: 0, x: -100}}
+      whileInView={{opacity: 1, x: 0}}
+      transition={{duration: 0.5}}
+    >
+      <div>
+        <p className="text-3xl font-bold m-4">Explore Projects</p>
+      </div>
+      <div className="grid grid-cols-3">
+        {mockProjects.map((project: Project, index) => {
+          return (
+            <div key={index}>
+              <Card className="m-4 pb-2">
+                <CardHeader>
+                  <CardTitle>{project.name}</CardTitle>
+                  <CardDescription>{project.fundingGoal}</CardDescription>
+                </CardHeader>
+                <CardContent className="grid grid-cols-2 ">
+                  <div className="flex items-center space-x-4 p-4">
+                    <span className="flex h-2 w-2 translate-y-1 rounded-full bg-sky-500" />
+                    <div className="space-y-1">
+                      <p className="text-sm font-medium leading-none">
+                        Funding Goal:
+                      </p>
+                      <p className="text-sm text-muted-foreground">
+                        {project.fundingGoal}
+                      </p>
                     </div>
-                );
-            })}
-        </div>
-    );
+                  </div>
+                  <div className="flex items-center space-x-4 p-4">
+                    <span className="flex h-2 w-2 translate-y-1 rounded-full bg-sky-500" />
+                    <div className="space-y-1">
+                      <p className="text-sm font-medium leading-none">
+                        Funding Recipient:
+                      </p>
+                      <p className="text-sm text-muted-foreground">
+                        {project.fundingRecipient}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center space-x-4 p-4">
+                    <span className="flex h-2 w-2 translate-y-1 rounded-full bg-sky-500" />
+                    <div className="space-y-1">
+                      <p className="text-sm font-medium leading-none">
+                        Amount Raised:
+                      </p>
+                      <p className="text-sm text-muted-foreground">
+                        {project.amountRaised}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center space-x-4 p-4">
+                    <span className="flex h-2 w-2 translate-y-1 rounded-full bg-sky-500" />
+                    <div className="space-y-1">
+                      <p className="text-sm font-medium leading-none">
+                        Total Funders:
+                      </p>
+                      <p className="text-sm text-muted-foreground">
+                        {project.totalFunders}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center space-x-4 p-4">
+                    <span className="flex h-2 w-2 translate-y-1 rounded-full bg-sky-500" />
+                    <div className="space-y-1">
+                      <p className="text-sm font-medium leading-none">
+                        Contributors:
+                      </p>
+                      <p className="text-sm text-muted-foreground">
+                        {project.contributions}
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+                <div className="flex justifu-center items-center">
+                  <div className="w-full flex justify-center">
+                    <FundProject project={project} />
+                  </div>
+                </div>
+              </Card>
+            </div>
+          );
+        })}
+      </div>
+    </motion.div>
+  );
 };
 
 export default Projects;
