@@ -460,7 +460,7 @@ const RegisterForm: React.FC = () => {
   const projectData = `{
     description: ${description},
     github_url: ${github},
-    guthub_stars: ${githubStars},
+    github_stars: ${githubStars},
   }`;
 
   console.log(projectData)
@@ -524,7 +524,7 @@ const RegisterForm: React.FC = () => {
         />
       </div>
       <div>
-        <Label htmlFor="password">Github Repo Link</Label>
+        <Label htmlFor="password">Github Repo Link <Label className="text-red-500">* (Make sure that the repo is public)</Label></Label>
         <Input
           type="text"
           id="password"
