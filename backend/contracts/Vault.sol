@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.19;
 
 interface FundingVault {
     function registerProject(
@@ -18,7 +18,7 @@ interface FundingVault {
         address _tokenToOwn,
         address _nftToOwn,
         bytes memory _data
-    ) external;
+    ) external payable;
 }
 
 contract Vault is FundingVault {
@@ -42,7 +42,6 @@ contract Vault is FundingVault {
         uint256 amount;
         uint256 duration;
         uint256 start;
-        uint256 end;
         bool active;
         address tokenToOwn;
         address nftToOwn;
@@ -60,14 +59,12 @@ contract Vault is FundingVault {
     Project[] public projects;
     DelegationAgreement[] public delegationAgreements;
 
-    
-
-    constructor(address _token) {
+    constructor() {
         //call approve for the tokens to be deposited in the aave protocol
-        token = IERC20(_token);
+        token = IERC20(0xc4bF5CbDaBE595361438F8c6a187bDc330539c60);
     }
 
-    function getProjects() external view returns (Project[] memory) {
+     function getProjects() external view returns (Project[] memory) {
         return projects;
     }
 
@@ -87,7 +84,7 @@ contract Vault is FundingVault {
         address _tokenToOwn,
         address _nftToOwn,
         bytes memory _data
-    ) external {
+    ) external payable {
         require(_amount > 0, "Vault: amount must be greater than 0");
         require(_duration > 0, "Vault: duration must be greater than 0");
         require(
@@ -114,12 +111,12 @@ contract Vault is FundingVault {
             _amount,
             _duration,
             block.timestamp,
-            block.timestamp + _duration,
             true,
             _tokenToOwn,
             _nftToOwn,
             _data
         );
+
         delegationAgreements.push(delegationAgreement);
     }
 
