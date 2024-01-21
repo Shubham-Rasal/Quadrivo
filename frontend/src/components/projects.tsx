@@ -1,7 +1,6 @@
 "use client";
 import { useContractRead } from "wagmi";
 import React from "react";
-import { buttonVariants } from "./ui/button";
 import FundProject from "./fund-project-dialog";
 import {
   Card,
@@ -12,7 +11,6 @@ import {
 } from "@/components/ui/card"
 
 import { motion } from 'framer-motion'
-import { Link } from "lucide-react";
 
 const Projects = () => {
   const abi = [
@@ -451,18 +449,32 @@ const Projects = () => {
 
   return (
     <motion.div
-      initial={{opacity: 0, x: -100}}
-      whileInView={{opacity: 1, x: 0}}
-      transition={{duration: 0.5}}
+      initial={{ opacity: 0, x: -100 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.5 }}
     >
+      <svg className="blur-3xl absolute opacity-80 right-0 -z-30" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" height="100%" width="50%">
+        <g clipPath="url(#clip0_17_60)">
+          <g filter="url(#filter0_f_17_60)">
+            <path d="M128.6 0H0V322.2L332.5 211.5L128.6 0Z" fill="rgba(117, 83, 212, 0.5)"></path>
+            <path d="M400 0H128.6L332.5 211.5L400 78.75V0Z" fill="rgba(117, 83, 172, 0.6)"></path>
+            <path d="M200 0H256.6L332.5 211.5L400 200.75V0Z" fill="rgba(255, 0, 255, 0.6)"></path>
+          </g></g>
+        <defs>
+          <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="719.867" id="filter0_f_17_60" width="719.867" x="-159.933" y="-159.933"><feFlood floodOpacity="0" result="BackgroundImageFix"></feFlood><feBlend in2="BackgroundImageFix" result="shape" in="SourceGraphic" mode="normal"></feBlend><feGaussianBlur stdDeviation="79.9667" result="effect1_foregroundBlur_17_60"></feGaussianBlur>
+          </filter>
+        </defs>
+      </svg>
+
+
       <div>
-        <h1 className="font-medium mt-8 p-8 text-[80px] leading-[74px] tracking-tight bg-clip-text text-transparent bg-gradient-to-br from-blue-900 via-violet-900 to-black">Explore Projects</h1>
+        <h1 className="font-medium mt-8 p-3 text-[80px] leading-[74px] tracking-tight bg-clip-text text-transparent bg-gradient-to-br from-blue-900 via-violet-900 to-black">Explore Projects</h1>
       </div>
       <div className="grid grid-cols-3">
         {mockProjects.map((project: Project, index) => {
           return (
             <div key={index} className="">
-              <Card className="m-4 pb-2">
+              <Card className="m-4 pb-2 border-2 border-purple-800 bg-transparent">
                 <CardHeader>
                   <CardTitle>{project.name}</CardTitle>
                   <CardDescription>{project.fundingGoal}</CardDescription>
@@ -518,11 +530,9 @@ const Projects = () => {
                   <div className="flex items-center space-x-4 p-4">
                     <span className="flex h-2 w-2 translate-y-1 rounded-full bg-sky-500" />
                     <div className="space-y-1">
-                      <p className="text-sm font-medium leading-none">
-                        Contributors:
-                      </p>
+                      <p className="text-sm font-medium leading-none">Contributors:</p>
                       <p className="text-sm text-muted-foreground">
-                        {project.contributions}
+                        {project.contributions.join(', ')}
                       </p>
                     </div>
                   </div>
