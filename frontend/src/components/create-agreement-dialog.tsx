@@ -22,6 +22,7 @@ import { useAccount, useContractWrite, useWalletClient } from "wagmi";
 import { PermitSignature, usePermit } from "wagmi-permit";
 import { parseEther } from "ethers";
 import { parse } from "path";
+import { useRouter } from "next/navigation";
 const CreateAgreement = () => {
   const [open, setOpen] = React.useState(false);
   const textEncoder = new TextEncoder();
@@ -1005,11 +1006,17 @@ const CreateAgreement = () => {
     ],
   });
 
+  const router = useRouter();
+
   const onSubmit = async (values: z.infer<typeof agreementSchema>) => {
     try {
       console.log(values);
       writeAgreement();
-      form.reset();
+      //wait for 5 secs
+      setTimeout(() => {
+        router.refresh();
+      }, 5000);      
+
     } catch (error) {
       console.log(error);
     }
@@ -1154,7 +1161,7 @@ const CreateAgreement = () => {
                       ? "Loading"
                       : permitWriteResult
                       ? "Permit Approved"
-                      : "Approve Permit"}
+                      : "Sign Permit"}
                   </Button>
                 )}
                 <Button type="submit">

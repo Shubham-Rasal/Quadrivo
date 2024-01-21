@@ -9,19 +9,10 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
-import { fromRpcSig } from "ethereumjs-util";
 import { Button } from "./ui/button";
-import { Form, FormField, FormItem, FormMessage, FormControl } from "./ui/form";
 import { Input } from "./ui/input";
-import * as z from "zod";
-import { useForm } from "react-hook-form";
-import { Textarea } from "./ui/textarea";
 import { Label } from "./ui/label";
-import vaultAbi from "@/abi/Vault.json";
-import { useAccount, useContractWrite, useWalletClient } from "wagmi";
-import { PermitSignature, usePermit } from "wagmi-permit";
-import { parseEther } from "ethers";
-import { parse } from "path";
+import { useAccount, useContractWrite } from "wagmi";
 const FundProject = ({
   projectId,
   onClose,
@@ -62,7 +53,7 @@ const FundProject = ({
     abi,
     address: "0xa9023fedF58dcf60f94c73C150D4454eDD62bA23",
     functionName: "fundProject",
-    args: [BigInt(projectId), BigInt(amt)* BigInt(10**18)],
+    args: [BigInt(projectId), BigInt(amt) * BigInt(10 ** 18)],
   });
 
   const submitFund = () => {
@@ -87,12 +78,16 @@ const FundProject = ({
           <Label>Project ID : {projectId}</Label>
 
           <Label>Amount (in GHO)</Label>
-          <Input placeholder="Amount" type="number" onChange={(event) => setAmt(Number(event.target.value))} />
+          <Input
+            placeholder="Amount"
+            type="number"
+            onChange={(event) => setAmt(Number(event.target.value))}
+          />
         </div>
 
         <div className="flex justify-end space-x-2">
           <Button onClick={() => setOpen(false)}>Cancel</Button>
-          <Button onClick={submitFund}>
+          <Button onClick={submitFund} disabled={fundLoading}>
             {fundLoading ? "Funding..." : "Fund"}
           </Button>
         </div>

@@ -426,7 +426,12 @@ const Projects = () => {
 
   console.log(data);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading)
+    return (
+      <div className="flex items-center justify-center h-screen">
+        Loading...
+      </div>
+    );
   if (error) return <div>Error: {error.message}</div>;
   if (!data) return <div>No data</div>;
 
