@@ -41,6 +41,19 @@ const Navbar: React.FC = () => {
           </a>
         </li>
         <li>
+          <a
+            href="/project"
+            style={{
+              textDecoration: "none",
+              fontWeight: "500",
+              color: "black",
+              marginRight: "10px",
+            }}
+          >
+            Explore Projects
+          </a>
+        </li>
+        <li>
           <ConnectKitButton />
         
         </li>

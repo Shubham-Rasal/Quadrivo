@@ -23,6 +23,7 @@
     "eth-permit": "^0.2.3",
     "ethereumjs-util": "^7.1.5",
     "ethers": "^6.10.0",
+    "framer-motion": "^10.18.0",
     "lucide-react": "^0.309.0",
     "next": "^14.0.4",
     "react": "^18",
