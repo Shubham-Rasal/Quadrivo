@@ -618,7 +618,9 @@ const RegisterForm: React.FC = () => {
           </div>
         </div>
       )}
-      <Button type="button" onClick={handleSubmit}>
+      <Button
+        className="w-fit"
+      type="button" onClick={handleSubmit}>
         Register Project
       </Button>
     </form>

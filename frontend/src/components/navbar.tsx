@@ -1,63 +1,25 @@
 import React from "react";
 import { ConnectKitButton } from "connectkit";
-import Token from "./token";
+import Link from "next/link";
 
 const Navbar: React.FC = () => {
   return (
     <nav style={{ padding: "20px" }}>
-      <ul
-        style={{
-          display: "flex",
-          justifyContent: "flex-end",
-          gap: "20px",
-          listStyle: "none",
-          alignItems: "center",
-        }}
-      >
-        <li>
-          <a
-            href="/agreements"
-            style={{
-              textDecoration: "none",
-              fontWeight: "500",
-              color: "black",
-              marginRight: "10px",
-            }}
-          >
-            Agreements
-          </a>
-        </li>
-        <li>
-          <a
-            href="/register"
-            style={{
-              textDecoration: "none",
-              fontWeight: "500",
-              color: "black",
-              marginRight: "10px",
-            }}
-          >
-            Register
-          </a>
-        </li>
-        <li>
-          <a
-            href="/project"
-            style={{
-              textDecoration: "none",
-              fontWeight: "500",
-              color: "black",
-              marginRight: "10px",
-            }}
-          >
-            Explore Projects
-          </a>
-        </li>
-        <li>
+      <div className="flex justify-between items-center">
+        <div className="flex items-center">
+          <Link href="/" className="text-2xl font-bold">
+            Quadrivo
+          </Link>
+          <div className="flex space-x-4 ml-8">
+            <Link href="/projects">Projects</Link>
+            <Link href="/agreements">Agreements</Link>
+            <Link href="/register">Register</Link>
+          </div>
+        </div>
+        <div className="flex items-center space-x-4">
           <ConnectKitButton />
-        
-        </li>
-      </ul>
+        </div>
+      </div>
     </nav>
   );
 };
