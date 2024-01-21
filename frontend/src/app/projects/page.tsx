@@ -436,7 +436,7 @@ const Projects = () => {
   if (!data) return <div>No data</div>;
 
   return (
-    <div className="grid grid-cols-2 gap-4 mt-2">
+    <div className="grid grid-cols-2 gap-4 mt-2 p-10">
       {data.map((project: Project, index) => {
         return (
           <Card key={index}>
@@ -505,7 +505,6 @@ const Projects = () => {
                     {project.contributions.length}
                   </div>
                 </div>
-
                 <FundProject projectId={index} onClose={() => {}} />
               </div>
             </CardContent>
