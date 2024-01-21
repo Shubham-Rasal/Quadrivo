@@ -1,12 +1,18 @@
 "use client";
-
 import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "./ui/button";
-import { readContracts, useNetwork, useContractRead, useAccount,useContractWrite,usePrepareContractWrite } from "wagmi";
+import {
+  readContracts,
+  useNetwork,
+  useContractRead,
+  useAccount,
+  useContractWrite,
+  usePrepareContractWrite,
+} from "wagmi";
 import { fetchBalance } from "@wagmi/core";
-import { ethers } from "ethers";
+import { ethers, parseEther } from "ethers";
 import { set } from "react-hook-form";
 import { Textarea } from "./ui/textarea";
 import { GitBranch } from "lucide-react";
@@ -416,13 +422,17 @@ const RegisterForm: React.FC = () => {
   const { chain } = useNetwork();
   const { address } = useAccount();
 
-  const [name, setName] = useState<string>("");
-  const [description, setDescription] = useState<string>("");
-  const [github, setGithub] = useState<string>("");
-  const [fundingGoal,setFundingGoal] = useState<number>(0)
+  const [name, setName] = useState<string>("Deano");
+  const [description, setDescription] = useState<string>(
+    "Testing the limits of decentralised annotation"
+  );
+  const [github, setGithub] = useState<string>(
+    "https://github.com/dmihal/eth-permit/blob/master/README.md"
+  );
+  const [fundingGoal, setFundingGoal] = useState<number>(0);
   const [githubStars, setGithubStars] = useState<number>(0);
   const [relatedContract, setRelatedContract] = useState<[string]>();
-  const [totalAmount, setTotalAmount] = useState<bigint>(0n);
+  const [totalAmount, setTotalAmount] = useState<bigint>(BigInt(0));
   const [verification, setVerification] = useState<boolean>(false);
   const [agreement, setAgreement] = useState<string[]>([]);
 
@@ -463,21 +473,17 @@ const RegisterForm: React.FC = () => {
     github_stars: ${githubStars},
   }`;
 
-  console.log(projectData)
+  console.log(projectData);
 
-  const contractCallInputs =
-  chain
-    ? {
-      address: "0xa9023fedF58dcf60f94c73C150D4454eDD62bA23",
-      abi: vaultABI,
-      functionName: "registerProject",
-      args: [name,projectData,fundingGoal,totalAmount],
-      chain,
-    }
-    : {};
-
-    const { config, error: wagmiSimulateError } = usePrepareContractWrite(contractCallInputs);
-    const { writeAsync } = useContractWrite(config);
+  const {} = useContractWrite({
+    abi: vaultABI,
+    address: "0xa9023fedF58dcf60f94c73C150D4454eDD62bA23",
+    functionName: "registerProject",
+    args: [name, description, BigInt(fundingGoal), BigInt(Number(ethers.formatEther(totalAmount)))],
+    onSettled: () => {
+      console.log("agreement settled");
+    },
+  });
 
   const verifyData = async (e: any) => {
     e.preventDefault();
@@ -490,7 +496,7 @@ const RegisterForm: React.FC = () => {
               token: item.tokenToOwn,
             });
             if (result) {
-              setTotalAmount((prev = 0n) => prev + item.amount);
+              setTotalAmount((prev = BigInt(0)) => prev + item.amount);
               setAgreement((prevAgreement) => [...prevAgreement, item.name]);
             }
             console.log(result);
@@ -505,13 +511,50 @@ const RegisterForm: React.FC = () => {
 
   console.log(agreement);
   console.log(verification);
+  const {
+    data: registerData,
+    error: projectError,
+    isLoading: projectLoading,
+    write: registerProjectWrite,
+  } = useContractWrite({
+    abi: vaultABI,
+    address: "0xa9023fedF58dcf60f94c73C150D4454eDD62bA23",
+    functionName: "registerProject",
+    args: [name, description, BigInt(fundingGoal), BigInt(totalAmount)],
+    onSettled: () => {
+      console.log("agreement settled");
+    },
+  });
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    console.log("submitting");
+    registerProjectWrite();
+
+    if (registerData) {
+      console.log(registerData);
+    }
+
+    if (projectError) {
+      console.log(projectError);
+    }
+
+
+
+  };
 
   return (
     <form className="p-20 pt-4 flex flex-col gap-5">
       <h1 className="text-2xl font-semibold">Register Your Project</h1>
       <div>
         <Label htmlFor="Project Name">Name:</Label>
-        <Input type="text" id="name" name="name" value={name || ""} onChange={(e) => setName(e.target.value)} />
+        <Input
+          type="text"
+          id="name"
+          name="name"
+          value={name || ""}
+          onChange={(e) => setName(e.target.value)}
+        />
       </div>
       <div>
         <Label htmlFor="email">Funding Goal</Label>
@@ -520,11 +563,16 @@ const RegisterForm: React.FC = () => {
           id="email"
           name="email"
           value={fundingGoal}
-            onChange={(e) => setFundingGoal(Number(e.target.value))}
+          onChange={(e) => setFundingGoal(Number(e.target.value))}
         />
       </div>
       <div>
-        <Label htmlFor="password">Github Repo Link <Label className="text-red-500">* (Make sure that the repo is public)</Label></Label>
+        <Label htmlFor="password">
+          Github Repo Link{" "}
+          <Label className="text-red-500">
+            * (Make sure that the repo is public)
+          </Label>
+        </Label>
         <Input
           type="text"
           id="password"
@@ -544,6 +592,7 @@ const RegisterForm: React.FC = () => {
       </div>
       <div className="flex gap-4">
         <Button
+          type="button"
           onClick={(e) => verifyData(e)}
           disabled={verification ? true : false}
         >
@@ -555,7 +604,9 @@ const RegisterForm: React.FC = () => {
         <div>
           <div>
             <span>Fund that you can get</span>
-            <strong className="mx-2">$ {totalAmount.toString()}</strong>
+            <strong className="mx-2">
+              $ {Number(ethers.formatEther(totalAmount))}
+            </strong>
           </div>
           <div>
             <span>Agreement for which you project is eligible</span>
@@ -567,6 +618,9 @@ const RegisterForm: React.FC = () => {
           </div>
         </div>
       )}
+      <Button type="button" onClick={handleSubmit}>
+        Register Project
+      </Button>
     </form>
   );
 };

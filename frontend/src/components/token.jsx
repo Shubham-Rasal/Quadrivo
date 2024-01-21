@@ -18,11 +18,11 @@ const Token = () => {
   console.log(result.data);
 
   return (
-    <Card>
+    <Card className=" w-full h-full">
       <CardHeader
         className="
-      
-      flex flex-row items-center justify-between   pb-1"
+   
+      flex flex-row items-center justify-between pb-1"
       >
         <CardTitle className="text-sm font-medium">Token Balance</CardTitle>
       </CardHeader>
