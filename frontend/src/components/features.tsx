@@ -30,7 +30,7 @@ const Features = () => {
       </motion.div>
 
       <motion.div className="flex justify-center items-center basis-full py-4 my-12"
-        initial={{ opacity: 0, x: -100 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
+        initial={{ opacity: 0, x: 100 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
         <div className="w-[80%] flex justify-evenly items-center">
           <Visual src={aboutData[3].src} />
           <Description title={aboutData[3].title} content1={aboutData[3].content1} content2={aboutData[3].content2} description={aboutData[3].description} />
